@@ -23,7 +23,7 @@ library for use in the UK Government Single Domain project}
   s.test_files    = Dir['test/**/*']
   s.require_paths = ["lib"]
 
-  s.add_dependency 'kramdown', '~> 0.13.3'
+  s.add_dependency 'kramdown', '~> 0.14.2'
   s.add_dependency 'htmlentities', '~> 4'
   s.add_dependency "sanitize", "2.0.3"
 
