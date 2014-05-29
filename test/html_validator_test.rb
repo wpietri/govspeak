@@ -26,8 +26,8 @@ class HtmlValidatorTest < Test::Unit::TestCase
       "$A Hercules House Hercules Road London SE1 7DU $A",
       "$D [An example form download link](http://example.com/ \"Example form\") Something about this form download $D",
       "$EAn example for the citizen$E - examples boxout",
-      "$!...$! - answer summary",
-      "{::highlight-answer}...{:/highlight-answer} - creates a large pink highlight box with optional preamble text and giant text denoted with **.",
+      "$!answer$! - answer summary",
+      "{::highlight-answer}highlighted answer{:/highlight-answer} - creates a large pink highlight box with optional preamble text and giant text denoted with **.",
       "{::highlight-answer}",
       "The VAT rate is *20%*",
       "{:/highlight-answer}",
@@ -53,7 +53,7 @@ class HtmlValidatorTest < Test::Unit::TestCase
       ":scotland:content goes here:scotland:"
     ]
     values.each do |value|
-      assert Govspeak::HtmlValidator.new(value).valid?
+      assert Govspeak::HtmlValidator.new(value).valid?, "#{value} failed to validate"
     end
   end
 
