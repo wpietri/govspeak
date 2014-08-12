@@ -84,4 +84,12 @@ class HtmlValidatorTest < Test::Unit::TestCase
   test "allow things that will end up as HTML entities" do
     assert Govspeak::HtmlValidator.new("Fortnum & Mason").valid?
   end
+
+  test "ndash thing" do
+  $asd =  true
+    html = "O hai i like to dash-- wat?"
+    assert Govspeak::HtmlValidator.new(html).valid?
+  $asd =  false
+
+  end
 end
