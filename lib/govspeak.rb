@@ -1,4 +1,5 @@
 require 'kramdown'
+require 'govspeak/jekyll_plugin'
 require 'govspeak/header_extractor'
 require 'govspeak/structured_header_extractor'
 require 'govspeak/html_validator'
