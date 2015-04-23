@@ -1,4 +1,4 @@
-class Jekyll::Converters::Markdown::MyCustomProcessor
+class Jekyll::Converters::Markdown::GovspeakProcessor
   def initialize(config)
     require 'govspeak'
     @config = config
