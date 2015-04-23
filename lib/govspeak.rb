@@ -101,6 +101,16 @@ module Govspeak
       parser.new(body.strip).to_html.sub(/^<p>(.*)<\/p>$/,"<p><strong>\\1</strong></p>")
     end
 
+    #  Chimespeak starts here
+
+    extension('address', surrounded_by("$address")) { |body|
+      %{\n\n<aside class="info-box event-address">\n#{ Govspeak::Document.new(body.strip).to_html}</aside>\n}
+    }
+
+
+
+    #  Chimespeak ends here
+
     extension('reverse') { |body|
       body.reverse
     }
