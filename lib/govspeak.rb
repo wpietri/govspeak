@@ -104,9 +104,26 @@ module Govspeak
 
     #  Chimespeak starts here
 
-    extension('address', surrounded_by("$address")) { |body|
-      %{\n\n<aside class="info-box event-address">\n#{ Govspeak::Document.new(body.strip).to_html}</aside>\n}
-    }
+    def self.lump(title, before, after, &block)
+      extension(title, surrounded_by("$#{title}")) do |body|
+        middle = Govspeak::Document.new(body.strip).to_html
+        middle=block.call(middle) if block
+        %{\n\n#{before}\n#{middle}#{after}\n}
+      end
+    end
+
+    def self.aside(title)
+      lump(title, %{<aside class="info-box event-#{title}">},'</aside>') {|body| body.gsub(/\s*rel="external"/,'')}
+    end
+
+
+    lump('poster', %{<aside class="info-box event-poster">},'</aside>') do |body|
+      body.gsub('<p><img', '<img').gsub('</p>','')
+    end
+
+    %w(date address contact registration).each {|title| aside(title)}
+
+    lump('callout', %{<section class="event-callout">},'</section>')
 
 
 
